@@ -1,0 +1,26 @@
+<!Doctype html>
+<html>
+  <head>
+
+  </head>
+  <body>
+
+  <h1>Child Window</h1>
+
+  <script> 
+   window.addEventListener('message', msgHandler, false);
+
+   var count = 0;
+   setInterval(() => {
+    count++;
+    parent.postMessage(`Child's MSG ${count}`, "*");      
+   }, 2000);
+
+
+   function msgHandler(e) {
+     console.log(e.data);
+   }
+  </script>    
+  
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!Doctype html>
+<html>
+  <head>
+
+  </head>
+  <body>
+
+  <h1>Parent Window</h1>
+  <iframe src="window.html" frameborder="0"></iframe>
+  <script> 
+   var child = document.querySelector('iframe').contentWindow;
+   var count = 25;
+   setInterval(() => {
+    count++;
+    child.postMessage(`Parent's MSG ${count}`, "*");      
+   }, 2000);
+
+   window.addEventListener('message', msgHandler, false);
+
+   function msgHandler(data) {
+     console.warn(data.data);
+   }
+
+  </script>    
+  
+  </body>
+</html>
